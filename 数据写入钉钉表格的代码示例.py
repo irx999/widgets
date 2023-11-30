@@ -44,8 +44,6 @@ class Ding():
         print(x1.text)
 
 
-
-
     def toding(self,df,start,end):
         url = f"https://api.dingtalk.com/v1.0/doc/workbooks/{self.sheetid}/sheets/{self.sheetname}/ranges/{self.begin[0]}{start+int(self.begin[1])}:{self.width}{end+int(self.begin[1])}?operatorId={self.operatorId}"
         json1 = {"values" : df.astype("str").iloc[start-1:end, :].values.tolist()}
