@@ -12,7 +12,7 @@ class Ding():
         
         
 
-        access_token = requests.get("https://oapi.dingtalk.com/gettoken?appkey={appkey}&appsecret={appsecret}").json()["access_token"]
+        access_token = requests.get(f"https://oapi.dingtalk.com/gettoken?appkey={appkey}&appsecret={appsecret}").json()["access_token"]
         # print(access_token)
         self.Header = {  'Host':'api.dingtalk.com',
                     'x-acs-dingtalk-access-token':access_token,
@@ -73,6 +73,7 @@ if __name__ == "__main__":
     
     Ding(appkey = "密钥",
          appsecret="密钥",
+         operatorId = "用户id",
         df_data= "pandas的dataframe",
         sheetid= "表格id",
         sheetname= "表格名称",
