@@ -1,7 +1,7 @@
 
 try:
-    import mitmproxy,json
-    import pandas as pd
+    import mitmproxy
+    import pandas
     import  xlwings
 except ImportError:
     import os
@@ -19,7 +19,7 @@ def run_terminal_program():
 terminal_process = run_terminal_program()
 while True:
     # 当控制台输入 y 的时候 将停止子进程
-    user_input = input("Press 'y' to terminate the second program:\n  请按Y结束 该子进程 ")
+    user_input = input("Press 'y' to terminate the second program:\n  请按Y 结束 该进程 ")
     if user_input.lower() == 'y':
         terminal_process.terminate()
         break
