@@ -1,5 +1,3 @@
-import functools
-
 def data_processing_decorator(preprocess, postprocess):
     """
     一个装饰器，用于在函数调用前后处理数据。
@@ -11,15 +9,18 @@ def data_processing_decorator(preprocess, postprocess):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             # 预处理输入数据
-            new_args = preprocess(*args)
-            
+            if preprocess is not None:
+                args = preprocess(*args)
+                result = func(*args, **kwargs)
+
             # 调用原函数
-            result = func(*new_args, **kwargs)
+            result = func(*args, **kwargs)
             
             # 后处理输出数据
-            new_result = postprocess(result)
+            if postprocess is not None:
+                result = postprocess(result)
             
-            return new_result
+            return result
         return wrapper
     return decorator
 
