@@ -1,23 +1,27 @@
+"""装饰器__函数前处理和后处理"""
+import functools
 def data_processing_decorator(preprocess, postprocess):
     """
-    一个装饰器，用于在函数调用前后处理数据。
-    
+    一个装饰器，用于在函数调用前后处理数据
     :param preprocess: 一个函数，用于在原函数调用前处理输入数据。
     :param postprocess: 一个函数，用于在原函数调用后处理输出数据。
     """
     def decorator(func):
         @functools.wraps(func)
+        
         def wrapper(*args, **kwargs):
+            
             # 预处理输入数据
             if preprocess is not None:
+                print(f"调用 {func.__name__} 前用{preprocess.__name__}处理输入数据\n")
                 args = preprocess(*args)
-                result = func(*args, **kwargs)
 
             # 调用原函数
             result = func(*args, **kwargs)
             
             # 后处理输出数据
             if postprocess is not None:
+                print(f"调用 {func.__name__} 后用{postprocess.__name__}处理返回数据\n")
                 result = postprocess(result)
             
             return result
