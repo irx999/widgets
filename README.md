@@ -1,2 +1,1 @@
-# widgets
-记录一下昨天的自己
+一些觉得很好的python 小tips

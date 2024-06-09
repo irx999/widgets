@@ -12,7 +12,7 @@ def data_processing_decorator(preprocess, postprocess):
         def wrapper(*args, **kwargs):
             
             # 预处理输入数据
-            if preprocess is not None:
+            if preprocess != None:
                 print(f"调用 {func.__name__} 前用{preprocess.__name__}处理输入数据\n")
                 args = preprocess(*args)
 
@@ -20,7 +20,7 @@ def data_processing_decorator(preprocess, postprocess):
             result = func(*args, **kwargs)
             
             # 后处理输出数据
-            if postprocess is not None:
+            if postprocess != None:
                 print(f"调用 {func.__name__} 后用{postprocess.__name__}处理返回数据\n")
                 result = postprocess(result)
             
@@ -41,7 +41,7 @@ def postprocess(result):
 
 
 if __name__ == '__main__':
-    @data_processing_decorator(preprocess, postprocess)
+    @data_processing_decorator(None, postprocess)
     def my_function(x, y, z):
         return x + y + z
 
